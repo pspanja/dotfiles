@@ -5,9 +5,6 @@ autoload -U colors && colors
 PROMPT='$(__print_prompt)'
 ZLE_RPROMPT_INDENT=0
 
-local C_EXIT_FAIL="%F{red}"
-local C_EXIT_OK="%F{green}"
-
 function __print_prompt {
     local current_commit_hash
 
@@ -223,11 +220,11 @@ function preexec() {
 
 function precmd() {
     if [ "$?" != 0 ] && [ "$preexec_called" = 1 ]; then
-        status_dot="${C_EXIT_FAIL} $(__input_prefix) "
-        RPROMPT="${C_EXIT_FAIL}%?%f < %T$(__print_prompt_context)"
+        status_dot="%F{red} $(__input_prefix) "
+        RPROMPT="%F{red}%?%f < %T$(__print_prompt_context)"
         unset preexec_called
     else
-        status_dot="${C_EXIT_OK} $(__input_prefix) "
+        status_dot="%F{green} $(__input_prefix) "
         RPROMPT="%f%T$(__print_prompt_context)"
     fi
 }

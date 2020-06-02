@@ -1,0 +1,15 @@
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+    dirhistory
+    git-extras
+    httpie
+    colored-man-pages
+    zsh-users/zsh-completions src
+    zsh-users/zsh-syntax-highlighting
+    zsh-users/zsh-autosuggestions
+    pspanja/dotfiles zsh/plugins/prompt
+    paulmelnikow/zsh-startup-timer
+EOBUNDLES
+
+antigen apply

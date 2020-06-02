@@ -129,11 +129,11 @@ function __print_git_line {
         commits_behind=$(\grep -c "^>" <<< "$commits_diff")
 
         if [[ $commits_ahead -gt 0 && $commits_behind -gt 0 ]]; then
-            echo -n "${CRH}-${commits_behind} ${s_diverged}  +${commits_ahead}  ("
+            echo -n "${CRH}-${commits_behind} ${s_diverged}  +${commits_ahead}  ${CR}("
         elif [[ $commits_behind -gt 0 ]]; then
-            echo -n "${CR}-${commits_behind} ${CRH}${s_fast_forward}${CR} --  ("
+            echo -n "${CR}-${commits_behind} ${CRH}${s_fast_forward}${CR} --  ${CR}("
         elif [[ $commits_ahead -gt 0 ]]; then
-            echo -n "${CR}-- ${CRH}${s_push}${CR}  +${commits_ahead}  ("
+            echo -n "${CR}-- ${CRH}${s_push}${CR}  +${commits_ahead}  ${CR}("
         fi
 
         echo -n "${CR}${current_branch} $(__cond "$will_rebase" "$s_rebase" "$s_merge") ${upstream//\/$current_branch/}"
